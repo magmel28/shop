@@ -1,10 +1,34 @@
 Rails.application.routes.draw do
+
+  namespace :backend do
+    resources :categories
+  end
+
+  resources :products, only: [:index, :show]
+
   root 'pages#home'
-  get 'pages/home'
+  get 'about' => 'pages#about', as: :about
+  get 'contact' => 'pages#contact', as: :contact
 
-  get 'pages/about'
-
-  get 'pages/contact'
+  # namespace :backend do
+  # get 'categories/index'
+  # end
+  #
+  # namespace :backend do
+  # get 'categories/new'
+  # end
+  #
+  # namespace :backend do
+  # get 'categories/create'
+  # end
+  #
+  # namespace :backend do
+  # get 'categories/update'
+  # end
+  #
+  # namespace :backend do
+  # get 'categories/show'
+  # end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
