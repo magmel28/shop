@@ -18,6 +18,10 @@ gem 'bootstrap-sass',       '3.2.0.0'
 gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 
+gem 'rmagick'
+gem 'carrierwave'
+
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
