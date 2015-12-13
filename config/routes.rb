@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'line_items/create'
+
+  get 'carts/show'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   namespace :backend do
@@ -7,6 +11,9 @@ Rails.application.routes.draw do
   end
 
   resources :products, only: [:index, :show]
+
+  resources :line_items
+  get 'cart' => 'carts#show'
 
   root 'pages#home'
   get 'about' => 'pages#about', as: :about
