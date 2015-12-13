@@ -14,6 +14,9 @@ Rails.application.routes.draw do
 
   resources :line_items
   get 'cart' => 'carts#show'
+  
+  post 'orders/create'
+  resources :orders
 
   root 'pages#home'
   get 'about' => 'pages#about', as: :about
