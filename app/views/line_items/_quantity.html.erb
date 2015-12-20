@@ -1,0 +1,3 @@
+<%= button_to '-', { controller: 'line_items', action: 'decrease_quantity', line_item: line_item }, remote: true,  :class => 'decrease_quantity'  %>
+<span><%= line_item.quantity %></span>
+<%= button_to '+', { controller: 'line_items', action: 'increase_quantity', line_item: line_item }, remote: true, :class => 'increase_quantity' %>

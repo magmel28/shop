@@ -9,4 +9,25 @@ class LineItemsController < ApplicationController
       redirect_to :back
     end
   end
+
+  def increase_quantity
+    line_item = LineItem.find(params[:line_item])
+    @quantity = line_item[:quantity] + 1
+    line_item.update_attribute(:quantity, @quantity)
+    respond_to do |format|
+      format.html{}
+      format.js{}
+    end
+  end
+
+  def decrease_quantity
+    line_item = LineItem.find(params[:line_item])
+    @quantity = line_item[:quantity]
+    @quantity = @quantity > 0 ? @quantity - 1 : 0
+    line_item.update_attribute(:quantity, @quantity)
+    respond_to do |format|
+      format.html{}
+      format.js{}
+    end
+  end
 end
