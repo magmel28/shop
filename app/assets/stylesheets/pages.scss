@@ -4,3 +4,13 @@
 .carousel-inner > .item > img{
   height: 318px !important;
 }
+.cart{
+  height: 50px;
+  padding-top: 15px;
+  min-width: 80px;
+  text-align: center;
+  text-decoration: none;
+}
+.cart:hover{
+  text-decoration: underline;
+}

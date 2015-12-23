@@ -2,7 +2,13 @@ class LineItemsController < ApplicationController
   def create
     @cart = current_cart
     product = Product.find(params[:product_id])
-    @line_item = @cart.line_items.build(product: product)
+    @line_item = @cart.line_items.find_by(product_id: product)
+    if @line_item.present?
+      @line_item.quantity += 1
+    else
+      @line_item = @cart.line_items.build(product: product)
+    end
+
     if @line_item.save
       redirect_to cart_path, notice: 'Отличная покупка!'
     else

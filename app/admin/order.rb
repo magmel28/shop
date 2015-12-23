@@ -1,5 +1,5 @@
 ActiveAdmin.register Order do
-  permit_params :phone, :name
+  permit_params :phone, :name, :status
 
   index do
     column :id
@@ -8,12 +8,25 @@ ActiveAdmin.register Order do
     end
     column 'Имя', :name
     column 'Телефон', :phone
+    column 'Статус', :status
+    selectable_column
     actions
   end
 
-  def products
+  statuses = ['Новый', 'В обработке', 'Отменен']
 
+  form do |f|
+    f.inputs 'Order' do
+      f.semantic_errors *f.object.errors.keys
+      f.input :name
+      f.input :phone
+      f.input :status , as: :select, collection: statuses, include_blank: false
+    end
+    f.actions
   end
+
+
+
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
