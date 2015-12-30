@@ -16,3 +16,27 @@
 //= require_tree .
 //= require bootstrap-sprockets
 
+var ready;
+ready = function () {
+    $('#q').bind('change input paste',function(){
+        var val = $(this).val()
+
+        $.get( "/search_suggestions?query="+val, function( data ) {
+            $('#results').empty();
+            $('#results').show();
+            $.each(data, function( index, result ) {
+
+                $('#results').append("<li>"+result+"</li>");
+                $('#results').click(function(){
+
+                });
+            });
+            //if (typeof (val) == 'undefined' || val = null) {
+            //    $('#results').hide();
+            //}
+        });
+    });
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);

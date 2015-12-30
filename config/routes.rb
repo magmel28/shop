@@ -24,6 +24,8 @@ Rails.application.routes.draw do
 
   post 'line_items/increase_quantity'
   post 'line_items/decrease_quantity'
+
+  get 'search_suggestions' => 'products#search_suggestions', as: :search_suggestions
   # namespace :backend do
   # get 'categories/index'
   # end

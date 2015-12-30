@@ -29,6 +29,23 @@
             </li>
           </ul>
             <a href="/cart" class="cart pull-right">Корзина</a>
+
+          <div class="container">
+            <div class="col-md-4">
+              <%= form_tag({controller: :products, action: 'search_suggestions'}, method: 'get', class: 'form-horizontal', id: 'header-search') do %>
+                  <div class="form-group">
+                    <div class="input-box">
+                      <%= text_field_tag(:q, (params[:q].present? ? params[:q] : nil), class: 'form-control', placeholder: 'Поиск', autocomplete: 'off') %>
+                      <i class="fa fa-search form-control-submit" aria-hidden="true" onclick="document.getElementById('header-search').submit();"></i>
+                      <ul id="results">
+
+                      </ul>
+                    </div>
+                  </div>
+              <% end %>
+            </div>
+          </div>
+
         </div>
         <!-- /.navbar-collapse -->
       </div>
