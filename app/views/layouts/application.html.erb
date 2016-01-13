@@ -19,6 +19,7 @@
     <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
     <% end %>
+  </div>
 
     <% if session[:count] == 10 %>
         <%= render 'shared/modal_banner'%>

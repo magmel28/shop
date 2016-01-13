@@ -5,16 +5,19 @@
 ul#results {
   position: absolute;
   background: white;
-  width: 282px;
+  width: 105%;
   list-style: none;
-  padding: 4px 15px;
-  border: 1px solid;
+  padding: 4px 0px;
+  border: 1px solid #f0f0f0;
   margin-top: 1px;
+  border-top: 0;
   display: none;
+  text-align: left;
   li{
     cursor: pointer;
+    padding: 2px 10px;
     &:hover{
-      background-color: wheat;
+      background-color: #f0f0f0;
     }
   }
 }

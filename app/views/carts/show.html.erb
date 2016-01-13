@@ -1,27 +1,33 @@
-<h1>Корзина</h1>
-<table>
-  <% @line_items.each do |line_item| %>
-    <tr>
-      <td><%= link_to line_item.product.title, product_path(line_item.product) %></td>
-      <td class="quantity">
-        <%= render partial: 'line_items/quantity', locals: {line_item: line_item} %>
-      </td>
-      <td><%= number_to_currency(line_item.product.price) %></td>
-    </tr>
-  <% end %>
-</table>
-<div>
-  <%= form_for(@order) do |f| %>
-      <div class="field">
-        <%= f.label :name %><br>
-        <%= f.text_field :name, size: 40 %>
-      </div>
-      <div class="field">
-        <%= f.label :phone %><br>
-        <%= f.text_field :phone, size: 40 %>
-      </div>
-      <div class="actions">
-        <%= f.submit 'Place Order' %>
-      </div>
-  <% end %>
+<div class="container">
+  <h1>Корзина</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <table class="line-items">
+        <% @line_items.each do |line_item| %>
+          <tr>
+            <td><%= link_to line_item.product.title, product_path(line_item.product) %></td>
+            <td class="quantity">
+              <%= render partial: 'line_items/quantity', locals: {line_item: line_item} %>
+            </td>
+            <td><%= number_to_currency(line_item.product.price) %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <%= form_for(@order) do |f| %>
+          <div class="field">
+            <%= f.label :name %><br>
+            <%= f.text_field :name, size: 40 %>
+          </div>
+          <div class="field">
+            <%= f.label :phone %><br>
+            <%= f.text_field :phone, size: 40 %>
+          </div>
+          <div class="actions">
+            <%= f.submit 'Place Order' %>
+          </div>
+      <% end %>
+    </div>
+  </div>
 </div>

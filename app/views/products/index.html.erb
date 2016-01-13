@@ -1,2 +1,33 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <% @products.each do |product| %>
+      <!-- Product -->
+      <div class="col-sm-4 col-md-3">
+        <%= link_to product do %>
+          <div class="product">
+            <!-- Product's image -->
+            <div class="product-image">
+              <%= image_tag product.image %>
+            </div>
+            <!--  -->
+
+            <div class="caption">
+              <a href="#">
+                <h4 class="title"><%= product.title %></h4>
+                <p class="description">
+                  <%= product.description %>
+                </p>
+                <div class="price">
+                  <div class="now"><%= product.price %><span class='currency'>руб.</span></div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div><!-- /Product -->
+      <% end %>
+    <% end %>
+    <% if @products.count < 1 %>
+      <p style="margin: 35px 0px;">По вашему запросу ничего не найдено</p>
+    <% end %>
+  </div>
+</div>

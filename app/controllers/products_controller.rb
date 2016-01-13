@@ -1,5 +1,13 @@
 class ProductsController < ApplicationController
   def index
+    if params[:category].present?
+      @products = Product.where(category_id: params[:category])
+    elsif params[:query].present?
+      query = params[:query]
+      @products = Product.where("title LIKE ? OR description LIKE ?", "%#{query}%", "%#{query}%")
+    else
+      @products = Product.all
+    end
   end
 
   def show
@@ -15,5 +23,6 @@ class ProductsController < ApplicationController
               end
 
     render json: result
+    #redirect_to products_path(query: 'Lacosta')
   end
 end

@@ -1,56 +1,53 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header>
   <div class="container">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Start Bootstrap</a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li>
-              <a href="#">About</a>
-            </li>
-            <li>
-              <a href="#">Services</a>
-            </li>
-            <li>
-              <a href="#">Contact</a>
-            </li>
-            <li>
-              <a href="admin">Admin</a>
-            </li>
-          </ul>
-            <a href="/cart" class="cart pull-right">Корзина</a>
+    <%= link_to image_tag('max1000.png'), root_path, class: 'logo' %>
+    <%= form_tag({controller: :products, action: 'search_suggestions'}, method: 'get', class: 'form-horizontal search-form', id: 'header-search') do %>
+        <div class="form-group">
+          <div class="input-box">
+            <%= text_field_tag(:q, (params[:q].present? ? params[:q] : nil), class: '', placeholder: 'Поиск', autocomplete: 'off', value: '') %>
+            <button class="submit-inside-input" aria-hidden="true" onclick="document.getElementById('header-search').submit();"><%= image_tag('search-btn.png') %></button>
 
-          <div class="container">
-            <div class="col-md-4">
-              <%= form_tag({controller: :products, action: 'search_suggestions'}, method: 'get', class: 'form-horizontal', id: 'header-search') do %>
-                  <div class="form-group">
-                    <div class="input-box">
-                      <%= text_field_tag(:q, (params[:q].present? ? params[:q] : nil), class: 'form-control', placeholder: 'Поиск', autocomplete: 'off') %>
-                      <i class="fa fa-search form-control-submit" aria-hidden="true" onclick="document.getElementById('header-search').submit();"></i>
-                      <ul id="results">
+            <ul id="results">
 
-                      </ul>
-                    </div>
-                  </div>
-              <% end %>
-            </div>
+            </ul>
           </div>
-
         </div>
-        <!-- /.navbar-collapse -->
+    <% end %>
+    <div class="counter_inside">
+      <div class="counter">
+        <span>7</span>
+        <span>2</span>
+        <span>6</span>
+        <span>2</span>
+        <span>9</span>
       </div>
-
-      <!-- /.container -->
-    </nav>
+      <p>товаров до 1000 рублей</p>
+    </div>
   </div>
 </header>
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Главная', root_path %></li>
+        <li><%= link_to 'Каталог', products_path %></li>
+        <li><%= link_to 'О нас', about_path, 'data-no-turbolink' => true %></li>
+        <li class="favorites">
+          <%= link_to cart_path do %>
+            <i class="fa fa-shopping-cart"></i>
+            <span class='fav'> Корзина</span>
+          <% end %>
+        </li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+

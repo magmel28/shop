@@ -21,6 +21,8 @@ gem 'devise'
 gem 'rmagick'
 gem 'carrierwave'
 
+gem 'font-awesome-sass', '~> 4.5.0'
+
 
 
 # Use jquery as the JavaScript library

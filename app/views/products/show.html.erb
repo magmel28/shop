@@ -1,13 +1,98 @@
-<h1><%= @product.title %></h1>
-<div>
-  <%= image_tag @product.image_url(:big) %>
-</div>
-<div>
-  <%= @product.description %>
-</div>
-<div>
-  Price: <%= number_to_currency(@product.price, precision: 2, separator: ',') %>
-</div>
-<div>
-  <%= button_to 'Buy', line_items_path(product_id: @product), class: 'btn-buy' %>
-</div>
+<!-- Product-Card section -->
+<div class="product-card-section">
+  <div class="container">
+    <div class="row">
+      <!-- Photo of product block -->
+      <div class="col-md-5">
+        <div class="product product-in-card">
+          <!-- Product's image -->
+          <div class="product-image">
+            <%= image_tag @product.image %>
+          </div>
+          <!-- -->
+
+          <div class="photos-link">
+            <a href="#"><i class='fa fa-camera'></i><span>28 фотографий</span></a>
+          </div>
+
+          <div class="social-networks text-center">
+            <a href="#" class="wow animated bounceIn" data-wow-delay="0.5s"><span class="icon-facebook"></span></a>
+            <a href="#" class="wow animated bounceIn" data-wow-delay="0.65s"><span class="icon-rus-vk-01"></span></a>
+            <a href="#" class="wow animated bounceIn" data-wow-delay="0.8s"><span class="icon-twitter-1"></span></a>
+            <a href="#" class="wow animated bounceIn" data-wow-delay="0.95s"><span class="icon-odnoklassniki"></span></a>
+            <a href="#" class="wow animated bounceIn" data-wow-delay="1.10s"><span class="icon-google__x2B_"></span></a>
+          </div>
+        </div>
+      </div>
+      <!-- /Photo of product block -->
+
+      <!-- Info of the product -->
+      <div class="col-md-7">
+        <div class="product-in-card">
+          <h2 class="product-title"><%= @product.title %></h2>
+          <div class="price">
+            <div class="now"><%= @product.price %><span class='currency'>руб.</span></div>
+          </div>
+          <div class="product-links">
+            <%= link_to 'Купить', line_items_path(product_id: @product), class: 'submit-outside-input buy', method: 'post' %>
+            <div class="get-promo-block">
+              <a href="#" class="get-promo">Получить промокод на товар
+              </a>
+                                <span class='promo-tooltip' data-toggle="tooltip" title='Help'><i class="fa fa-question"></i>
+
+                                  <!-- promo-tooltip-window -->
+                                    <div class="promo-tooltip-window">
+                                      Промокод поможет тебе получить скидку на товар!
+                                    </div>
+                                </span>
+
+
+              <!-- get-promo tooltip -->
+              <div class="get-promo-tooltip">
+                <span class='close-get-promo-tooltip glyphicon glyphicon-remove'></span>
+                <p>Скидка 10% - код <span>0097822</span></p>
+                <p>Скидка 300 руб - код <span>0287745</span></p>
+                <p>Бесплатная доставка - код <span>4564811</span></p>
+              </div>
+
+
+
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="row">
+              <div class="col-sm-4">
+                <p class="info-item"><span>Артикул: </span>SWA0097</p>
+                <p class="info-item"><span>Наличие: </span>Есть в наличии</p>
+                <p class="info-item"><span>Магазин: </span>KupiVIP</p>
+                <p class="info-item"><span>Доставка: </span>Бесплатная</p>
+              </div>
+              <div class="col-sm-8">
+                <p class="show-all">Посмотреть все <a href="#">аксессуары</a></p>
+                <p class="show-all">Посмотреть все <a href="#">шарфы</a></p>
+                <p class="show-all">Посмотреть все аксессуары бренда <a href="#">Giorgio Armani</a></p>
+              </div>
+              <div class="col-sm-12 short-description">
+                <h4>Краткое описание</h4>
+                <p>Наш интернет-магазин одежды работает с официальными поставщиками указанных на сайте брендов. В интернет-магазине можно купить детскую, женскую, мужскую одежду и обувь. Недорогая одежда и обувь в России европейского качества. Мы представляем очень крупного ритейлера одежды и обуви из Европы и можем предложить вам товары ведущих европейских брендов по низким ценам. Весь ассортимент
+                  магазина одежды и обуви является оригинальным и его качество гарантирует производитель. </p>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.product-in-cart -->
+
+        <!-- Form -->
+        <div class="subscription wow animated fadeInRight" data-wow-delay="0.2s">
+          <h4>Вступайте в клуб и получайте лучше предложения на свой email</h4>
+          <form action="" class="form-inline">
+            <input type='text' class="form-control" placeholder='Введите Ваше имя'>
+            <input type='text' class="form-control" placeholder='Введите email'>
+            <button type="submit" class="btn submit-outside-input">ХОЧУ ПОЛУЧАТЬ</button>
+          </form>
+          <p>Никакого спама, гарантия 100%! В любой момент Вы сможете отписаться от рассылки!</p>
+        </div>
+        <!-- /Form -->
+      </div><!-- /.col-md-7 -->
+    </div><!-- /.row -->
+  </div><!-- /.container -->
+</div><!-- /Product-Card section -->

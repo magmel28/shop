@@ -27,8 +27,20 @@ ready = function () {
             $.each(data, function( index, result ) {
 
                 $('#results').append("<li>"+result+"</li>");
-                $('#results').click(function(){
 
+                $('#results li').hover(function(){
+                    var chosen_value = $(this).text();
+                    $('.search-form input[type="text"]').val(chosen_value);
+                });
+                var chosen_value;
+                $('#results li').click(function(){
+                    chosen_value = $(this).text();
+                    $('.search-form input[type="text"]').val(chosen_value);
+                    $('#results').empty().hide();
+                });
+                $('.submit-inside-input').click(function() {
+                    window.location.href = '/products?query=' + chosen_value;
+                    return false;
                 });
             });
             //if (typeof (val) == 'undefined' || val = null) {
