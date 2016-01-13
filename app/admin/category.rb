@@ -16,5 +16,16 @@ ActiveAdmin.register Category do
 #   permitted
 # end
 
+  form do |f|
+    f.inputs 'Category' do
+      f.semantic_errors *f.object.errors.keys
+      f.input :title
+      f.input :description
+      f.input :position
+      f.input :image, :as => :file
+    end
+    f.actions
+  end
+
 
 end
