@@ -45,7 +45,7 @@
               </div><!-- /Sort -->
             </div>
             <div class="col-xs-6 col-sm-6 col-md-4 text-right">
-              <!-- Display products on page -->
+              <!-- Display products on page
               <div class="display-on-page">
                 <div class="your-choice">Выводить на странице:</div>
                 <div class="radio">
@@ -60,7 +60,7 @@
                   <input type="radio" name='display' id="hundred">
                   <label for="hundred">120</label>
                 </div>
-              </div><!-- /Display products on page -->
+              </div>  /Display products on page -->
             </div>
           </div>
         </form>
@@ -94,6 +94,7 @@
             <% if @products.count < 1 %>
               <p style="margin: 35px 0px;">По вашему запросу ничего не найдено</p>
             <% end %>
+            <%= will_paginate @products %>
           </div>
         </div>
       </div>

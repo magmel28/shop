@@ -22,6 +22,7 @@ gem 'rmagick'
 gem 'carrierwave'
 
 gem 'font-awesome-sass', '~> 4.5.0'
+gem 'will_paginate', '~> 3.0.6'
 
 
 

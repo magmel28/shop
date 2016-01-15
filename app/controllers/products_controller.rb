@@ -3,13 +3,13 @@ class ProductsController < ApplicationController
     @categories = Category.all
 
     if params[:category].present?
-      @products = Product.where(category_id: params[:category]).sorted(params[:sort])
+      @products = Product.where(category_id: params[:category]).sorted(params[:sort]).paginate(:page => params[:page], :per_page => 30)
       @category = @products.first.category
     elsif params[:query].present?
       @query = params[:query]
-      @products = Product.where("title LIKE ? OR description LIKE ?", "%#{@query}%", "%#{@query}%").sorted(params[:sort])
+      @products = Product.where("title LIKE ? OR description LIKE ?", "%#{@query}%", "%#{@query}%").sorted(params[:sort]).paginate(:page => params[:page], :per_page => 30)
     else
-      @products = Product.all.sorted(params[:sort])
+      @products = Product.all.paginate(:page => params[:page], :per_page => 30).sorted(params[:sort])
     end
   end
 
