@@ -76,3 +76,32 @@ $( document ).ready(function(){
         $('#colors_list').hide();
     }, 100)
 });
+
+/*
+$( document ).ready(function() {
+    $('.sort-by a').click(function(){
+       $(this).parent().prev().attr( 'checked', 'checked' );
+    });
+});
+
+$(document).ready(function () {
+    if (window.location.href.indexOf("sort=by_price_down") > -1) {
+        $('.sort-by #by_price_down').attr( 'checked', 'checked' );
+    }
+    else if (window.location.href.indexOf("sort=by_price_up") > -1) {
+        $('.sort-by #by_price_up').attr( 'checked', 'checked' );
+    }
+});
+*/
+var ready;
+ready = function () {
+    if (window.location.href.indexOf("sort=by_price_down") > -1) {
+        $('.sort-by #by_price_down').attr( 'checked', 'checked' );
+    }
+    else if (window.location.href.indexOf("sort=by_price_up") > -1) {
+        $('.sort-by #by_price_up').attr( 'checked', 'checked' );
+    }
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);

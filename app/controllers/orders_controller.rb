@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
                              location: @order }
       else
         @cart = current_cart
-        format.html { render action: 'new' }
+        format.html { redirect_to cart_path }
         format.json { render json: @order.errors,
                              status: :unprocessable_entity }
       end

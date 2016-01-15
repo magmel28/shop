@@ -28,6 +28,7 @@ class LineItemsController < ApplicationController
 
   def decrease_quantity
     line_item = LineItem.find(params[:line_item])
+    @price = line_item.product.price
     @quantity = line_item[:quantity]
     @quantity = @quantity > 0 ? @quantity - 1 : 0
     line_item.update_attribute(:quantity, @quantity)

@@ -1,33 +1,101 @@
-<div class="container">
-  <div class="row">
-    <% @products.each do |product| %>
-      <!-- Product -->
-      <div class="col-sm-4 col-md-3">
-        <%= link_to product do %>
-          <div class="product">
-            <!-- Product's image -->
-            <div class="product-image">
-              <%= image_tag product.image %>
-            </div>
-            <!--  -->
+<!-- Catalog of products -->
+<div class="catalog-section">
+  <div class="container">
+    <div class="row">
+      <div class="catalog-menu col-sm-4 col-md-3">
+        <h4 id="catalog_of_products">Каталог товаров <span class='mobile-btn'></span></h4>
+          <!-- The first level of depth -->
+          <ul class="categories-list" id="catalog_of_products_list">
+            <% @categories.each do |category| %>
+              <li class="category-list-item">
+                <%= link_to category.title, action: 'index', category: category %>
+              </li>
+            <% end %>
+          </ul>
+      </div>
+      <div class="catalog-content col-sm-8 col-md-9">
+        <h2>
+          <% if @category.present? %>
+              <%= @category.title %>
+          <% elsif @query.present? %>
+              <%= @query %>
+          <% else %>
+              Все
+          <% end %>
+          <span class='quantity-of-products'>(<%=	@category.present? ? @category.products.count : @products.count %>)</span>
+        </h2>
 
-            <div class="caption">
-              <a href="#">
-                <h4 class="title"><%= product.title %></h4>
-                <p class="description">
-                  <%= product.description %>
-                </p>
-                <div class="price">
-                  <div class="now"><%= product.price %><span class='currency'>руб.</span></div>
+
+        <form action="products" class="sort-form form-inline">
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-8">
+              <!-- Sort -->
+              <div class="sort-by">
+                <div class="your-choice">Сортировать:</div>
+                <div class="radio">
+                  <input type="radio" name='sort' value="by_price_up" id="by_price_up">
+                  <label for="by_price_up"><%= link_to 'от дешевых к дорогим', params.merge(sort: 'by_price_up') %></label>
                 </div>
-              </a>
+                <div class="radio">
+                  <input type="radio" name='sort' value="by_price_down" id="by_price_down">
+                  <label for="by_price_down"><%= link_to 'от дорогих  к дешевым', params.merge(sort: 'by_price_down') %></label>
+                </div>
+
+
+              </div><!-- /Sort -->
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-4 text-right">
+              <!-- Display products on page -->
+              <div class="display-on-page">
+                <div class="your-choice">Выводить на странице:</div>
+                <div class="radio">
+                  <input type="radio" name='display' id="thirty">
+                  <label for="thirty">30</label>
+                </div>
+                <div class="radio">
+                  <input type="radio" name='display' id="sixty" checked="">
+                  <label for="sixty">60</label>
+                </div>
+                <div class="radio">
+                  <input type="radio" name='display' id="hundred">
+                  <label for="hundred">120</label>
+                </div>
+              </div><!-- /Display products on page -->
             </div>
           </div>
-        </div><!-- /Product -->
-      <% end %>
-    <% end %>
-    <% if @products.count < 1 %>
-      <p style="margin: 35px 0px;">По вашему запросу ничего не найдено</p>
-    <% end %>
-  </div>
-</div>
+        </form>
+          <div class="row">
+            <% @products.each do |product| %>
+              <!-- Product -->
+              <div class="col-sm-4 col-md-3">
+                <%= link_to product do %>
+                  <div class="product">
+                    <!-- Product's image -->
+                    <div class="product-image">
+                      <%= image_tag product.image %>
+                    </div>
+                    <!--  -->
+
+                    <div class="caption">
+                      <a href="#">
+                        <h4 class="title"><%= product.title %></h4>
+                        <p class="description">
+                          <%= product.description %>
+                        </p>
+                        <div class="price">
+                          <div class="now"><%= product.price %><span class='currency'>руб.</span></div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div><!-- /Product -->
+              <% end %>
+            <% end %>
+            <% if @products.count < 1 %>
+              <p style="margin: 35px 0px;">По вашему запросу ничего не найдено</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+   </div>

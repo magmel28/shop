@@ -4,13 +4,18 @@
     <div class="col-md-6">
       <table class="line-items">
         <% @line_items.each do |line_item| %>
-          <tr>
-            <td><%= link_to line_item.product.title, product_path(line_item.product) %></td>
-            <td class="quantity">
-              <%= render partial: 'line_items/quantity', locals: {line_item: line_item} %>
-            </td>
-            <td><%= number_to_currency(line_item.product.price) %></td>
-          </tr>
+          <% if line_item[:quantity] != 0 %>
+            <tr>
+              <td><%= link_to line_item.product.title, product_path(line_item.product) %></td>
+              <td class="quantity">
+                <%= render partial: 'line_items/quantity', locals: {line_item: line_item} %>
+              </td>
+              <td class="line-item-price"><%= line_item.product.price * line_item[:quantity] %></td>
+            </tr>
+          <% end %>
+        <% end %>
+        <% if @line_items.count < 1 %>
+          <p>Корзина пуста</p>
         <% end %>
       </table>
     </div>
