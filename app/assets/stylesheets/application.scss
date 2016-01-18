@@ -189,7 +189,7 @@ header .container{
   font-style: italic;
 }
 .header-title{
-  background-image: url(header_image.png);
+  background-image: image-url('header_image.png');
   background-repeat: no-repeat;
   color: white;
   min-height: 140px;
@@ -1095,7 +1095,7 @@ footer ul li a{
   margin-top: 18px;
 }
 .subscription{
-  background-image: url(grey_bg.png);
+  background-image: image-url('grey_bg.png');
   padding: 28px;
   padding-right: 20px;
   border-radius: 5px;
